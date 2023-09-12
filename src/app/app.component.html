@@ -31,6 +31,15 @@
          <p>{{result}} {{cont2}}</p>
      </div>
  </div>
+
+  <div class="conversion-history">
+    <h2>Conversion History</h2>
+    <ul>
+      <li *ngFor="let conversion of conversionHistory">
+        {{ conversion.base }} to {{ conversion.target }}: {{ conversion.result }}
+      </li>
+    </ul>
+  </div>
 </div>
 
 </ion-content>

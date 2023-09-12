@@ -14,6 +14,11 @@ export class AppComponent {
   cont2 = 'USD';
   result: string = '1'
 
+
+  // Array to store conversion history
+  conversionHistory: { base: string; target: string; result: string }[] = [];
+
+
   changebase(a:string){
     this.base = a;
     // console.log(this.base)
@@ -49,6 +54,20 @@ export class AppComponent {
       if (this.cont2 == 'EUR'){
         this.result = this.currjson.rates.EUR
       }
+
+
+      // Add the conversion to the history
+      this.conversionHistory.unshift({
+        base: this.base,
+        target: this.cont2,
+        result: this.result,
+      });
+
+      // Keep only the last 3 conversions in the history
+      if (this.conversionHistory.length > 3) {
+        this.conversionHistory.pop();
+      }
+
 
     })
 
